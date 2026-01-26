@@ -1,7 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  list-style-type: none;
+  font-family: "Roboto", sans-serif;
 }
+
+nav {
+  display: flex;
+  justify-content: center;
+
+  height: 80px;
+  padding: 0 24px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  max-height: 50vh;
+  padding: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1200px;
+}
+
+.text--purple {
+  color: #7342d6;
+}
+
+.logo {
+  width: 160px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+/* Create underline effect on hover for all links EXCEPT for last link. */
+.nav-links > *:not(:last-child):hover {
+  text-decoration: underline;
+}
+
+.nav__link {
+  padding: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #7342d6;
+}
+
+.nav__link--i {
+  border: 2px solid #7342d6;
+  border-radius: 4px;
+}
+
+#landing {
+  background-color: rgba(115, 66, 214, 0.1);
+}
+
+
+/* 
+
+    HEADER SECTION
+
+*/
+
+header {
+  height: calc(100vh - 80px);
+  padding: 0 24px;
+}
+
+.header__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 720px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.header-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-description__title {
+  margin-bottom: 24px;
+  font-size: 56px;
+  text-align: center;
+  color: #7342d6;
+}
+
+.header-description__subtitle, h2 {
+  margin-bottom: 32px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.header-description__btn {
+  padding: 12px 24px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #7342d6;
+}
+
+.header-img__wrapper {
+    padding: 20px;
+}
+
+.row {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row__wrapper {
+    padding: 56px 0;
+}
+
+/* 
+
+    HIGHLIGHTS SECTION
+    FES Video - 25:15
+
+*/
+
