@@ -14,6 +14,7 @@
 
   list-style-type: none;
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -35,16 +36,34 @@ img {
   max-height: 50vh;
 }
 
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 p {
   line-height: 1.5;
 }
 
-button {
-  cursor: pointer;
-}
 
 button:active {
   transform: translateY(2px);
+}
+
+.browse-books__btn {
+  cursor: pointer;
+  padding: 12px 24px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #7342d6;
+}
+
+.no-cursor {
+  cursor: not-allowed;
 }
 
 .nav__container {
@@ -69,11 +88,6 @@ button:active {
   gap: 24px;
 }
 
-/* Create underline effect on hover for all links EXCEPT for last link. */
-.nav-links > *:not(:last-child):hover {
-  text-decoration: underline;
-}
-
 .nav__link {
   padding: 8px;
   font-size: 20px;
@@ -85,17 +99,79 @@ button:active {
 .nav__link--i {
   border: 2px solid #7342d6;
   border-radius: 4px;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
-#landing {
-  background-color: rgba(115, 66, 214, 0.1);
+.btn__menu {
+  display: none;
+  border: none;
+
+  font-size: 40px;
+  text-align: center;
+  color: #7342d6;
+  background-color: transparent;
+}
+
+.btn__menu--close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  padding: 8px;
+  color: white;
+}
+
+.menu__backdrop {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  transition: all 300ms ease;
+  
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  opacity: 0;
+
+  background-color: #a55b5b;
+}
+
+.menu--open .menu__backdrop {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu--open {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.menu__link {
+  font-size: 40px;
+  color: white;
 }
 
 /* 
 
-    HEADER SECTION
+    LANDING SECTION
 
 */
+
+#landing {
+  background-color: rgba(115, 66, 214, 0.1);
+}
 
 header {
   height: calc(100vh - 80px);
@@ -132,15 +208,6 @@ h2 {
   text-align: center;
 }
 
-.header-description__btn {
-  padding: 12px 24px;
-  font-size: 20px;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  background-color: #7342d6;
-}
-
 .header-img__wrapper {
   padding: 20px;
   z-index: 2;
@@ -158,6 +225,12 @@ h2 {
 
 .row__wrapper {
   padding: 56px 0;
+}
+
+.row--flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 
@@ -198,13 +271,13 @@ h2 {
 
 .highlight__wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .highlight {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-items: center;
   width: calc(100% / 3);
   padding: 0 24px;
 }
@@ -247,6 +320,7 @@ h2 {
 
 .book-section {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .book {
@@ -284,19 +358,103 @@ h2 {
 }
 
 .book__ratings {
-    margin-bottom: 8px;
-    color: #fabf2a;
+  margin-bottom: 8px;
+  color: #fabf2a;
 }
 
 .book__price-normal {
-    text-decoration: line-through;
-    padding-right: 6px;
-    color: #bfbfbf;
+  text-decoration: line-through;
+  padding-right: 6px;
+  color: #bfbfbf;
 }
 
 /* 
 
-    LATEST BOOKS SECTION
-    FES Video - 49:20
+    EXPLORE SECTION
 
 */
+
+#explore {
+  background-color: rgba(115, 66, 214, 0.1);
+}
+
+/* 
+
+    FOOTER
+
+*/
+
+footer {
+  background-color: #242424;
+}
+
+.footer-logo__wrapper {
+  display: flex;
+}
+
+.footer-logo__img {
+  width: 160px;
+  filter: grayscale(1) invert(1);
+}
+
+.footer-nav__link,
+.footer-copyright {
+  color: white;
+}
+
+.footer-nav__wrapper {
+  width: 100%;
+  padding: 0 24px;
+  margin: 24px 0;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+
+
+/* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
+@media (max-width: 768px) {
+  .header-description {
+    padding: 0 24px;
+  } 
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  button {
+    font-size: 18px;
+  }
+
+  .book {
+    width: 50%;
+  }
+
+  .highlight {
+    width: 100%;
+  }
+
+  .highlight__wrapper {
+    gap: 24px;
+  }
+}
+
+/* SMALL PHONES, LARGE SMARTPHONES */
+@media (max-width: 550px) {
+  .nav-links {
+    display: none;
+  }
+
+  .btn__menu {
+    display: block;
+  }
+}
